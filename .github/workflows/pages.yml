@@ -21,10 +21,15 @@ jobs:
         uses: actions/checkout@v6
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+      - name: Assemble public site
+        run: |
+          mkdir _site
+          cp -R site/. _site/
+          cp tiktokvcwX9YhkcLCB6jgDcyBjrOdECajWaym7.txt _site/
       - name: Upload legal site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: site
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
